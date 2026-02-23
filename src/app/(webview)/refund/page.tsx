@@ -10,9 +10,6 @@ const REFUND_POLICY_ITEMS = [
 
 const COMPANY_INFO_ITEMS = [
   { label: "상호명", value: "라이프다이버전스" },
-  { label: "사업자등록번호", value: "797-43-01003 / 정보통신업 응용 소프트웨어 개발 및 공급업, 자동차 세차업" },
-  { label: "주소", value: "울산광역시 중구 종가6길 21, 우정혁신타워 605호" },
-  { label: "통신판매 신고번호", value: "2024-울산중구-0396" },
   { label: "개인정보 처리방침 및 기타문의사항", value: "contact@washfun.fun / 070-8806-8088" },
 ];
 
