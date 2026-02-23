@@ -17,7 +17,7 @@ const Refund = () => {
   return (
     <div className="flex size-full justify-center border">
       <div className="flex w-[1200px] max-w-[90vw] flex-col gap-4 px-6 py-10">
-        <h1 className="text-xl font-semibold">환불 정책</h1>
+        <h1 className="text-xl font-semibold text-black">취소/환불 정책</h1>
         <ul className="flex flex-col gap-2 text-sm leading-relaxed text-black">
           {REFUND_POLICY_ITEMS.map((item) => (
             <li key={item} dangerouslySetInnerHTML={{ __html: item.replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>") }} />
