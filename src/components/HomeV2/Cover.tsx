@@ -21,7 +21,7 @@ export default function Cover() {
         </div>
 
         <div className="mt-[16px] flex max-w-[90%] flex-col items-center justify-center gap-[6px] px-4 text-center text-balance">
-          <h2 className="text-[18px] font-normal text-secondaryDefault lg:text-[14px]">세차장 창업·리모델링·시스템 도입 컨설팅</h2>
+          <h2 className="text-[18px] font-normal text-secondaryDefault lg:text-[14px]">세차 결제 방식의 혁신, 워시펀</h2>
           <p className="text-[18px] font-normal text-secondaryDefault lg:text-[13px]">후불제 셀프 세차부터 구독제 자동 세차까지.</p>
         </div>
 

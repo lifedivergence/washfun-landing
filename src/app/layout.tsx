@@ -60,7 +60,7 @@ const pretendard = localFont({
 const SITE_URL = "https://www.lifedivergence.com";
 const SITE_NAME = "워시펀 WashFun";
 const DEFAULT_TITLE =
-  "워시펀 WashFun | 세차장 창업·리모델링·시스템 도입 컨설팅";
+  "워시펀 WashFun | 세차장 결제 솔루션 혁신";
 const DEFAULT_DESCRIPTION =
   "세차장 창업, 리모델링, 무인 시스템 도입까지 — 워시펀이 함께합니다. RF카드를 대체하는 후불제 셀프 세차, 구독제 자동 세차, 점주용 관리 시스템과 운영 컨설팅을 무료 상담받아 보세요.";
 
