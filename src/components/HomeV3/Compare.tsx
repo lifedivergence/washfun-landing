@@ -124,7 +124,7 @@ export default function Compare() {
                   aria-label="워시펀 매장과 기존 매장의 위치입니다. 직선거리 146미터, 차로 1분 거리입니다."
                 >
                   <image
-                    href="/images/v2/png/map-tile.png"
+                    href="/images/v2/webp/map-tile.webp"
                     width="915"
                     height="625"
                   />
