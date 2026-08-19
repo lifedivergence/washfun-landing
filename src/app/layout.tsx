@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Script from "next/script";
 import localFont from "next/font/local";
 import "./globals.css";
 import GoogleAnalytics from "@/lib/GoogleAnalytics";
@@ -59,16 +58,15 @@ const pretendard = localFont({
 
 const SITE_URL = "https://www.lifedivergence.com";
 const SITE_NAME = "워시펀 WashFun";
-const DEFAULT_TITLE =
-  "워시펀 WashFun | 세차장 결제 솔루션 혁신";
+const DEFAULT_TITLE = "워시펀 WashFun | 세차장 결제 솔루션 혁신";
 const DEFAULT_DESCRIPTION =
-  "세차장 창업, 리모델링, 무인 시스템 도입까지 — 워시펀이 함께합니다. RF카드를 대체하는 후불제 셀프 세차, 구독제 자동 세차, 점주용 관리 시스템과 운영 컨설팅을 무료 상담받아 보세요.";
+  "세차장 창업부터 리모델링, 무인 시스템 도입까지 워시펀이 함께합니다. RF카드를 대체하는 후불제 셀프 세차, 구독제 자동 세차, 사장님 관리 시스템과 운영 컨설팅을 무료로 상담해 드립니다.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
     default: DEFAULT_TITLE,
-    template: "%s | 워시펀 WashFun",
+    template: "%s | 워시펀",
   },
   description: DEFAULT_DESCRIPTION,
   applicationName: SITE_NAME,
@@ -103,14 +101,6 @@ export const metadata: Metadata = {
   creator: "라이프다이버전스",
   publisher: "라이프다이버전스",
   category: "Business",
-  formatDetection: {
-    telephone: true,
-    email: true,
-    address: true,
-  },
-  alternates: {
-    canonical: "/",
-  },
   openGraph: {
     type: "website",
     locale: "ko_KR",
@@ -121,8 +111,8 @@ export const metadata: Metadata = {
     images: [
       {
         url: "/images/png/cover-page.png",
-        width: 1200,
-        height: 630,
+        width: 1920,
+        height: 1038,
         alt: "워시펀 세차장 솔루션 대시보드",
       },
     ],
@@ -147,34 +137,48 @@ export const metadata: Metadata = {
   verification: {
     google: "rFOt_n-IDumlpzicrWEfpl9ctFdZW62a2IkNIanTBaM",
     other: {
-      "naver-site-verification":
-        "d983fee3f0b7db68efd9a65aa2ebd48490c11d92",
+      "naver-site-verification": "d983fee3f0b7db68efd9a65aa2ebd48490c11d92",
     },
   },
 };
 
+// 회사 엔티티는 하나로 유지한다. Organization 과 LocalBusiness 를 따로 두면
+// 같은 회사가 두 개로 잡힌다. sameAs 는 소유한 프로필 자리라 언론 보도 URL 은 넣지 않는다.
 const organizationJsonLd = {
   "@context": "https://schema.org",
-  "@type": "Organization",
+  "@type": ["Organization", "LocalBusiness"],
+  "@id": `${SITE_URL}#organization`,
   name: "워시펀 WashFun",
   legalName: "주식회사 라이프다이버전스",
   url: SITE_URL,
-  logo: `${SITE_URL}/images/logo/HorizontalType.svg`,
+  logo: `${SITE_URL}/images/logo/logo180.png`,
+  image: `${SITE_URL}/images/png/cover-page.png`,
   description: DEFAULT_DESCRIPTION,
   email: "contact@washfun.fun",
   telephone: "+82-70-8806-8088",
+  priceRange: "\u20a9\u20a9",
   address: {
     "@type": "PostalAddress",
     streetAddress: "종가6길 21, 우정혁신타워 605호",
     addressLocality: "울산광역시 중구",
+    addressRegion: "울산광역시",
+    postalCode: "44429",
     addressCountry: "KR",
   },
-  sameAs: [
-    "https://www.hankookilbo.com/News/Read/A2024110614530001135",
-    "https://www.news1.kr/industry/general-industry/5565629",
-    "http://www.interviewm.com/news/articleView.html?idxno=4634",
-  ],
+  geo: {
+    "@type": "GeoCoordinates",
+    latitude: 35.5683,
+    longitude: 129.3505,
+  },
   areaServed: "KR",
+  openingHoursSpecification: [
+    {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+      opens: "09:00",
+      closes: "18:00",
+    },
+  ],
   knowsAbout: [
     "세차장 창업 컨설팅",
     "세차장 리모델링",
@@ -189,79 +193,11 @@ const organizationJsonLd = {
 const websiteJsonLd = {
   "@context": "https://schema.org",
   "@type": "WebSite",
+  "@id": `${SITE_URL}#website`,
   name: SITE_NAME,
   url: SITE_URL,
   inLanguage: "ko-KR",
-  publisher: {
-    "@type": "Organization",
-    name: "주식회사 라이프다이버전스",
-  },
-};
-
-const professionalServiceJsonLd = {
-  "@context": "https://schema.org",
-  "@type": "ProfessionalService",
-  name: "워시펀 세차장 컨설팅",
-  url: `${SITE_URL}/consulting`,
-  image: `${SITE_URL}/images/png/cover-page.png`,
-  description:
-    "세차장 창업, 리모델링, 무인 시스템 도입, 운영 효율화까지 워시펀이 지원하는 세차장 종합 컨설팅 서비스.",
-  provider: {
-    "@type": "Organization",
-    name: "주식회사 라이프다이버전스",
-  },
-  areaServed: "KR",
-  telephone: "+82-70-8806-8088",
-  email: "contact@washfun.fun",
-  priceRange: "₩₩",
-  serviceType: [
-    "세차장 창업 컨설팅",
-    "세차장 리모델링 컨설팅",
-    "세차장 시스템 도입",
-    "세차장 운영 컨설팅",
-  ],
-};
-
-const localBusinessJsonLd = {
-  "@context": "https://schema.org",
-  "@type": "LocalBusiness",
-  "@id": `${SITE_URL}#localbusiness`,
-  name: "워시펀 WashFun",
-  legalName: "주식회사 라이프다이버전스",
-  url: SITE_URL,
-  image: `${SITE_URL}/images/png/cover-page.png`,
-  logo: `${SITE_URL}/images/logo/HorizontalType.svg`,
-  description: DEFAULT_DESCRIPTION,
-  telephone: "+82-70-8806-8088",
-  email: "contact@washfun.fun",
-  priceRange: "₩₩",
-  address: {
-    "@type": "PostalAddress",
-    streetAddress: "종가6길 21, 우정혁신타워 605호",
-    addressLocality: "울산광역시 중구",
-    addressRegion: "울산광역시",
-    postalCode: "44429",
-    addressCountry: "KR",
-  },
-  geo: {
-    "@type": "GeoCoordinates",
-    latitude: 35.5683,
-    longitude: 129.3505,
-  },
-  areaServed: { "@type": "Country", name: "대한민국" },
-  openingHoursSpecification: [
-    {
-      "@type": "OpeningHoursSpecification",
-      dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-      opens: "09:00",
-      closes: "18:00",
-    },
-  ],
-  sameAs: [
-    "https://www.instagram.com/wash.fun_official/",
-    "https://www.hankookilbo.com/News/Read/A2024110614530001135",
-    "https://www.news1.kr/industry/general-industry/5565629",
-  ],
+  publisher: { "@id": `${SITE_URL}#organization` },
 };
 
 export default function RootLayout({
@@ -272,7 +208,12 @@ export default function RootLayout({
   return (
     <html lang="ko-KR" className={`${pretendard.variable}`}>
       <head>
-        <link rel="shortcut icon" href="/icon.ico" />
+        {/* JS 사용 가능할 때만 등장 애니메이션 적용 */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: "document.documentElement.classList.add('js')",
+          }}
+        />
         <meta name="theme-color" content="#ffffff" />
         <meta name="format-detection" content="telephone=yes" />
       </head>
@@ -280,35 +221,16 @@ export default function RootLayout({
         {process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS ? (
           <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS} />
         ) : null}
-        <Script
-          id="ld-organization"
+        {/* JSON-LD: 서버 렌더 (JS 미실행 크롤러 대응) */}
+        <script
           type="application/ld+json"
-          strategy="afterInteractive"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify(organizationJsonLd),
           }}
         />
-        <Script
-          id="ld-website"
+        <script
           type="application/ld+json"
-          strategy="afterInteractive"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }}
-        />
-        <Script
-          id="ld-service"
-          type="application/ld+json"
-          strategy="afterInteractive"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify(professionalServiceJsonLd),
-          }}
-        />
-        <Script
-          id="ld-localbusiness"
-          type="application/ld+json"
-          strategy="afterInteractive"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify(localBusinessJsonLd),
-          }}
         />
         {children}
         <FloatingCTA />

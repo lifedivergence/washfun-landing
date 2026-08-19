@@ -37,3 +37,12 @@ yarn-error.log*
 next-env.d.ts
 
 todo
+
+# internal
+internal-data/
+
+# local tooling
+.claude/
+
+# 미사용 애셋 보관
+/_unused/
