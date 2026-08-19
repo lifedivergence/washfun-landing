@@ -1,7 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import Script from "next/script";
 import Header from "@/components/common/Header";
 import Footer from "@/components/HomeV2/Footer";
 import { track } from "@/lib/analytics";
@@ -17,11 +16,16 @@ export type LongTailContent = {
   highlights: string[];
   sections: { h: string; body: string; bullets?: string[] }[];
   faq: { q: string; a: string }[];
+  footnote?: string;
   ctaLead: string;
   related: { href: string; label: string }[];
 };
 
-export default function LongTailPage({ content }: { content: LongTailContent }) {
+export default function LongTailPage({
+  content,
+}: {
+  content: LongTailContent;
+}) {
   const url = `${SITE_URL}/consulting/${content.slug}`;
 
   const faqJsonLd = {
@@ -80,22 +84,19 @@ export default function LongTailPage({ content }: { content: LongTailContent }) 
   return (
     <>
       <Header />
-      <Script
+      <script
         id={`ld-faq-${content.slug}`}
         type="application/ld+json"
-        strategy="afterInteractive"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
       />
-      <Script
+      <script
         id={`ld-breadcrumb-${content.slug}`}
         type="application/ld+json"
-        strategy="afterInteractive"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
       />
-      <Script
+      <script
         id={`ld-webpage-${content.slug}`}
         type="application/ld+json"
-        strategy="afterInteractive"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(webPageJsonLd) }}
       />
 
@@ -104,9 +105,13 @@ export default function LongTailPage({ content }: { content: LongTailContent }) 
           aria-label="브레드크럼"
           className="mt-[24px] text-[14px] text-secondaryDefault"
         >
-          <Link href="/" className="hover:underline">홈</Link>
+          <Link href="/" className="hover:underline">
+            홈
+          </Link>
           <span className="mx-[6px]">›</span>
-          <Link href="/consulting" className="hover:underline">세차장 컨설팅</Link>
+          <Link href="/consulting" className="hover:underline">
+            세차장 컨설팅
+          </Link>
           <span className="mx-[6px]">›</span>
           <span className="text-black">{content.breadcrumbName}</span>
         </nav>
@@ -125,7 +130,11 @@ export default function LongTailPage({ content }: { content: LongTailContent }) 
             <div className="mt-[24px] flex items-center gap-[12px] lg:flex-col">
               <Link
                 href="/contact"
-                onClick={() => track("lead_cta_click", { source: `longtail_${content.slug}_hero` })}
+                onClick={() =>
+                  track("lead_cta_click", {
+                    source: `longtail_${content.slug}_hero`,
+                  })
+                }
                 className="rounded-[999px] bg-main px-[28px] py-[14px] text-[16px] font-semibold text-white"
                 aria-label={`${content.breadcrumbName} 무료 상담 신청`}
               >
@@ -133,7 +142,11 @@ export default function LongTailPage({ content }: { content: LongTailContent }) 
               </Link>
               <a
                 href="tel:+82-70-8806-8088"
-                onClick={() => track("lead_cta_click", { source: `longtail_${content.slug}_tel` })}
+                onClick={() =>
+                  track("lead_cta_click", {
+                    source: `longtail_${content.slug}_tel`,
+                  })
+                }
                 className="rounded-[999px] border border-borderStrong px-[24px] py-[14px] text-[16px] font-semibold text-black"
                 aria-label="전화 상담 070-8806-8088"
               >
@@ -183,13 +196,22 @@ export default function LongTailPage({ content }: { content: LongTailContent }) 
               )}
               <Link
                 href="/contact"
-                onClick={() => track("lead_cta_click", { source: `longtail_${content.slug}_section` })}
+                onClick={() =>
+                  track("lead_cta_click", {
+                    source: `longtail_${content.slug}_section`,
+                  })
+                }
                 className="mt-[24px] inline-flex w-fit items-center gap-[6px] text-[14px] font-semibold text-main"
               >
                 관련 상담 신청 →
               </Link>
             </article>
           ))}
+          {content.footnote && (
+            <p className="break-keep text-[12px] leading-[1.6] text-secondaryDefault">
+              {content.footnote}
+            </p>
+          )}
         </section>
 
         <section className="mx-auto mt-[120px] max-w-[1000px] lg:mt-[60px]">
@@ -242,14 +264,22 @@ export default function LongTailPage({ content }: { content: LongTailContent }) 
             <div className="mt-[28px] flex items-center justify-center gap-[12px] lg:flex-col">
               <Link
                 href="/contact"
-                onClick={() => track("lead_cta_click", { source: `longtail_${content.slug}_bottom` })}
+                onClick={() =>
+                  track("lead_cta_click", {
+                    source: `longtail_${content.slug}_bottom`,
+                  })
+                }
                 className="rounded-[999px] bg-white px-[28px] py-[14px] text-[16px] font-semibold text-black"
               >
                 무료 상담 신청
               </Link>
               <a
                 href="mailto:contact@washfun.fun"
-                onClick={() => track("lead_cta_click", { source: `longtail_${content.slug}_email` })}
+                onClick={() =>
+                  track("lead_cta_click", {
+                    source: `longtail_${content.slug}_email`,
+                  })
+                }
                 className="rounded-[999px] border border-white/40 px-[24px] py-[14px] text-[16px] font-semibold text-white"
               >
                 contact@washfun.fun

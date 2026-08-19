@@ -1,15 +1,13 @@
 import type { Metadata } from "next";
-import Script from "next/script";
 import Link from "next/link";
 import Header from "@/components/common/Header";
 import Footer from "@/components/HomeV2/Footer";
 
 const SITE_URL = "https://www.lifedivergence.com";
 
-const title =
-  "세차장 창업·리모델링·시스템 도입 컨설팅 — 워시펀";
+const title = "세차장 창업·리모델링·시스템 도입 종합 컨설팅";
 const description =
-  "세차장 개업을 고민 중이거나, 기존 매장 리모델링·무인 시스템 도입·운영 효율화를 검토하시나요? 워시펀이 창업비용 분석부터 후불제 셀프 세차, 구독제 자동 세차, 점주용 관리 시스템까지 한 번에 컨설팅합니다. 무료 상담 신청.";
+  "세차장 개업을 고민 중이거나, 기존 매장 리모델링·무인 시스템 도입·운영 효율화를 검토하시나요? 워시펀이 창업비용 분석부터 후불제 셀프 세차, 구독제 자동 세차, 사장님 관리 시스템까지 한 번에 컨설팅합니다. 무료 상담 신청.";
 
 export const metadata: Metadata = {
   title,
@@ -60,19 +58,19 @@ export const metadata: Metadata = {
 const FAQ = [
   {
     q: "세차장 창업비용은 얼마나 드나요?",
-    a: "입지, 면적, 셀프/자동 세차 구성, 기기 사양에 따라 다릅니다. 워시펀은 무료 사전 상담을 통해 예상 매출, 회수기간, 초기 투자비를 함께 시뮬레이션해 드립니다.",
+    a: "입지, 면적, 셀프/자동 세차 구성, 설비 사양에 따라 다릅니다. 워시펀은 무료 사전 상담을 통해 예상 매출, 회수기간, 초기 투자비를 함께 시뮬레이션해 드립니다.",
   },
   {
     q: "기존 세차장을 리모델링하면서 시스템만 바꿀 수 있나요?",
-    a: "가능합니다. 워시펀은 모든 기기를 교체하지 않고도 기존 RF카드·키오스크 환경에 후불제 셀프 세차, 구독제 자동 세차, 포인트 시스템을 단계적으로 도입할 수 있도록 설계되어 있습니다.",
+    a: "가능합니다. 세차기와 펌프, 청소기 같은 기존 설비는 그대로 두고 결제와 운영 시스템만 워시펀으로 바꿉니다. RF카드는 워시펀 코인박스에서 사용할 수 없으며, 카드에 남은 잔액은 키오스크에서 워시펀 포인트로 옮깁니다.",
   },
   {
     q: "직영·가맹·개인 운영 세차장 모두 도입 가능한가요?",
-    a: "네, 운영 형태에 관계없이 도입 가능합니다. 점주용 관리 대시보드를 통해 매출, 기기 상태, 고객 데이터, 포인트 충전 현황을 한 화면에서 관리할 수 있습니다.",
+    a: "네, 운영 형태에 관계없이 도입 가능합니다. 사장님 대시보드에서 매출, 설비 상태, 고객 데이터, 포인트 충전 현황을 한 화면으로 확인하실 수 있습니다.",
   },
   {
     q: "비수기 매출이 걱정인데 구독제 자동 세차가 정말 도움이 되나요?",
-    a: "워시펀 구독 고객의 월 평균 방문은 2.6회로, 비수기에도 안정적인 고정 매출을 만듭니다. 시간대 변동 요금제와 날씨 기반 프로모션으로 비수기 객수를 추가로 끌어올릴 수 있습니다.",
+    a: "워시펀 구독 고객은 월 평균 3.8회 방문합니다. 구독하지 않은 고객(1.1회)의 약 3.4배로, 비수기에도 안정적인 고정 매출을 만듭니다. 시간대 변동 요금제로 비수기 객수를 추가로 끌어올릴 수 있습니다. 날씨 기반 프로모션은 연구 개발 중입니다.",
   },
   {
     q: "상담은 어떻게 신청하나요?",
@@ -114,63 +112,98 @@ const breadcrumbJsonLd = {
 
 const SEGMENTS = [
   {
+    href: "/consulting/start-business",
+    cta: "세차장 창업 가이드 보기",
     h: "세차장 개업·창업을 고민 중이신가요?",
     sub: "세차장 창업비용, 입지 분석, 매출 시뮬레이션부터 함께합니다.",
     bullets: [
       "셀프세차장·자동세차장 창업 모델 비교",
       "예상 매출·회수기간·운영비 분석",
-      "초기 기기 구성, 인허가, 설비 동선 컨설팅",
+      "초기 설비 구성, 인허가, 매장 동선 컨설팅",
       "후불제·구독제 기반 차별화된 창업 전략",
     ],
   },
   {
+    href: "/consulting/remodeling",
+    cta: "리모델링 절차 보기",
     h: "세차장 리모델링을 계획하고 계신가요?",
-    sub: "기존 RF카드 환경을 유지하면서 단계적으로 디지털 전환할 수 있습니다.",
+    sub: "기존 설비는 살리고 결제부터 단계적으로 디지털 전환할 수 있습니다.",
     bullets: [
-      "기존 설비 유지 + 후불제 셀프 세차 부분 도입",
-      "현금 키오스크 → 포인트 자동 충전 전환",
+      "세차기·펌프·청소기 유지 + 결제만 후불제로 전환",
+      "기존 키오스크는 소프트웨어만 교체해 포인트 충전 키오스크로 전환",
       "구독제 자동 세차 추가로 객단가·재방문율 확보",
       "기존 고객 혼란 없는 점진적 마이그레이션 설계",
     ],
   },
   {
+    href: "/consulting/system",
+    cta: "시스템 도입 알아보기",
     h: "세차장 시스템 도입을 검토 중이신가요?",
-    sub: "무인 운영, 점주용 대시보드, 변동 요금제까지 한 번에 도입하세요.",
+    sub: "무인 운영, 사장님 대시보드, 변동 요금제까지 한 번에 도입하세요.",
     bullets: [
       "후불제 자동 결제 셀프 세차 시스템",
       "정기 구독 기반 노터치 자동 세차 시스템",
-      "포인트 자동 충전 현금 키오스크",
-      "가격·재고·기기 상태 통합 점주용 관리 시스템",
+      "포인트 충전 키오스크",
+      "가격·재고·설비 상태를 한곳에 모은 사장님 대시보드",
       "KC 인증 설비와 신속 A/S",
     ],
   },
   {
+    href: "/consulting/operations",
+    cta: "운영 컨설팅 보기",
     h: "이미 세차장을 운영 중이신가요?",
     sub: "매출 분석, 프로모션 자동화, 객단가 증대까지 운영 컨설팅으로 지원합니다.",
     bullets: [
-      "시간대별 변동 요금제·날씨 기반 프로모션",
+      "시간대별 변동 요금제 · 날씨 기반 프로모션(연구 개발 중)",
       "구독 고객 확보로 비수기 매출 고정화",
-      "객단가 평균 +22% 사례 기반 운영 개선",
-      "진상 고객·기기 장애 대응을 위한 무인 운영 보조",
+      "객단가 평균 +14.1% 사례 기반 운영 개선",
+      "고객 분쟁·설비 장애 대응을 위한 무인 운영 보조",
     ],
   },
 ];
+
+const professionalServiceJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  name: "워시펀 세차장 컨설팅",
+  "@id": `${SITE_URL}/consulting#service`,
+  url: `${SITE_URL}/consulting`,
+  image: `${SITE_URL}/images/png/cover-page.png`,
+  description:
+    "세차장 창업, 리모델링, 무인 시스템 도입, 운영 효율화까지 워시펀이 지원하는 세차장 종합 컨설팅 서비스.",
+  provider: { "@type": "Organization", "@id": `${SITE_URL}#organization` },
+  areaServed: "KR",
+  telephone: "+82-70-8806-8088",
+  email: "contact@washfun.fun",
+  priceRange: "₩₩",
+  serviceType: [
+    "세차장 창업 컨설팅",
+    "세차장 리모델링 컨설팅",
+    "세차장 시스템 도입",
+    "세차장 운영 컨설팅",
+  ],
+};
 
 export default function ConsultingPage() {
   return (
     <>
       <Header />
       <main className="box-border w-full px-[120px] font-Pretendard text-black lg:px-[16px]">
-        <Script
+        <script
           id="ld-faq-consulting"
           type="application/ld+json"
-          strategy="afterInteractive"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
         />
-        <Script
+        <script
+          id="ld-professionalservice-consulting"
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(professionalServiceJsonLd),
+          }}
+        />
+        <script
           id="ld-breadcrumb-consulting"
           type="application/ld+json"
-          strategy="afterInteractive"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
         />
 
@@ -180,13 +213,14 @@ export default function ConsultingPage() {
               세차장 종합 컨설팅 · 워시펀
             </p>
             <h1 className="text-balance text-[56px] font-bold leading-[1.15] lg:text-[26px] lg:leading-[1.3]">
-              세차장 창업, 리모델링, 시스템 도입까지<br className="md:hidden" />
-              한 번에 컨설팅 받으세요.
+              세차장 창업, 리모델링, 시스템 도입까지
+              <br className="md:hidden" />한 번에 컨설팅 받으세요.
             </h1>
             <p className="max-w-[760px] text-[18px] leading-[28px] text-secondaryDefault lg:text-[14px] lg:leading-[22px]">
-              세차장 개업을 고민 중이거나, 기존 매장의 리모델링·무인 시스템 도입·운영 효율화를 검토하시나요?
-              워시펀은 창업비용 분석부터 후불제 셀프 세차, 구독제 자동 세차, 점주용 관리 시스템까지
-              세차장 운영의 전 과정을 한 팀이 함께 설계합니다.
+              세차장 개업을 고민 중이거나, 기존 매장의 리모델링·무인 시스템
+              도입·운영 효율화를 검토하시나요? 워시펀은 창업비용 분석부터 후불제
+              셀프 세차, 구독제 자동 세차, 사장님 관리 시스템까지 세차장 운영의
+              전 과정을 한 팀이 함께 설계합니다.
             </p>
             <div className="mt-[24px] flex items-center gap-[12px] lg:flex-col">
               <Link
@@ -231,10 +265,10 @@ export default function ConsultingPage() {
                 ))}
               </ul>
               <Link
-                href="/contact"
+                href={seg.href}
                 className="mt-auto inline-flex w-fit items-center gap-[6px] text-[14px] font-semibold text-main"
               >
-                관련 상담 신청 →
+                {seg.cta} →
               </Link>
             </article>
           ))}
@@ -249,45 +283,93 @@ export default function ConsultingPage() {
           </p>
           <ul className="mt-[32px] grid grid-cols-3 gap-[12px] lg:grid-cols-1">
             <li>
-              <Link href="/consulting/start-business" className="block h-full rounded-[20px] border border-borderStrong p-[24px] hover:border-main">
+              <Link
+                href="/consulting/start-business"
+                className="block h-full rounded-[20px] border border-borderStrong p-[24px] hover:border-main"
+              >
                 <p className="text-[14px] font-semibold text-main">창업</p>
-                <p className="mt-[8px] text-[20px] font-semibold lg:text-[18px]">세차장 창업 가이드 →</p>
-                <p className="mt-[8px] text-[14px] text-secondaryDefault">창업비용·입지·수익 시뮬레이션</p>
+                <p className="mt-[8px] text-[20px] font-semibold lg:text-[18px]">
+                  세차장 창업 가이드 →
+                </p>
+                <p className="mt-[8px] text-[14px] text-secondaryDefault">
+                  창업비용·입지·수익 시뮬레이션
+                </p>
               </Link>
             </li>
             <li>
-              <Link href="/consulting/self-wash" className="block h-full rounded-[20px] border border-borderStrong p-[24px] hover:border-main">
-                <p className="text-[14px] font-semibold text-main">창업 · 셀프</p>
-                <p className="mt-[8px] text-[20px] font-semibold lg:text-[18px]">셀프세차장 창업 →</p>
-                <p className="mt-[8px] text-[14px] text-secondaryDefault">후불제·IoT 코인박스·베이 구성</p>
+              <Link
+                href="/consulting/self-wash"
+                className="block h-full rounded-[20px] border border-borderStrong p-[24px] hover:border-main"
+              >
+                <p className="text-[14px] font-semibold text-main">
+                  창업 · 셀프
+                </p>
+                <p className="mt-[8px] text-[20px] font-semibold lg:text-[18px]">
+                  셀프세차장 창업 →
+                </p>
+                <p className="mt-[8px] text-[14px] text-secondaryDefault">
+                  후불제·IoT 코인박스·베이 구성
+                </p>
               </Link>
             </li>
             <li>
-              <Link href="/consulting/auto-wash" className="block h-full rounded-[20px] border border-borderStrong p-[24px] hover:border-main">
-                <p className="text-[14px] font-semibold text-main">창업 · 자동</p>
-                <p className="mt-[8px] text-[20px] font-semibold lg:text-[18px]">자동세차장 창업 →</p>
-                <p className="mt-[8px] text-[14px] text-secondaryDefault">노터치·구독제·드라이브스루</p>
+              <Link
+                href="/consulting/auto-wash"
+                className="block h-full rounded-[20px] border border-borderStrong p-[24px] hover:border-main"
+              >
+                <p className="text-[14px] font-semibold text-main">
+                  창업 · 자동
+                </p>
+                <p className="mt-[8px] text-[20px] font-semibold lg:text-[18px]">
+                  자동세차장 창업 →
+                </p>
+                <p className="mt-[8px] text-[14px] text-secondaryDefault">
+                  노터치·구독제·드라이브스루
+                </p>
               </Link>
             </li>
             <li>
-              <Link href="/consulting/remodeling" className="block h-full rounded-[20px] border border-borderStrong p-[24px] hover:border-main">
+              <Link
+                href="/consulting/remodeling"
+                className="block h-full rounded-[20px] border border-borderStrong p-[24px] hover:border-main"
+              >
                 <p className="text-[14px] font-semibold text-main">리모델링</p>
-                <p className="mt-[8px] text-[20px] font-semibold lg:text-[18px]">세차장 리모델링 →</p>
-                <p className="mt-[8px] text-[14px] text-secondaryDefault">RF카드 유지하며 단계적 전환</p>
+                <p className="mt-[8px] text-[20px] font-semibold lg:text-[18px]">
+                  세차장 리모델링 →
+                </p>
+                <p className="mt-[8px] text-[14px] text-secondaryDefault">
+                  기존 설비 살리며 단계적 전환
+                </p>
               </Link>
             </li>
             <li>
-              <Link href="/consulting/system" className="block h-full rounded-[20px] border border-borderStrong p-[24px] hover:border-main">
-                <p className="text-[14px] font-semibold text-main">시스템 도입</p>
-                <p className="mt-[8px] text-[20px] font-semibold lg:text-[18px]">무인 시스템 도입 →</p>
-                <p className="mt-[8px] text-[14px] text-secondaryDefault">키오스크·POS·관리 대시보드</p>
+              <Link
+                href="/consulting/system"
+                className="block h-full rounded-[20px] border border-borderStrong p-[24px] hover:border-main"
+              >
+                <p className="text-[14px] font-semibold text-main">
+                  시스템 도입
+                </p>
+                <p className="mt-[8px] text-[20px] font-semibold lg:text-[18px]">
+                  무인 시스템 도입 →
+                </p>
+                <p className="mt-[8px] text-[14px] text-secondaryDefault">
+                  키오스크·POS·관리 대시보드
+                </p>
               </Link>
             </li>
             <li>
-              <Link href="/consulting/operations" className="block h-full rounded-[20px] border border-borderStrong p-[24px] hover:border-main">
+              <Link
+                href="/consulting/operations"
+                className="block h-full rounded-[20px] border border-borderStrong p-[24px] hover:border-main"
+              >
                 <p className="text-[14px] font-semibold text-main">운영</p>
-                <p className="mt-[8px] text-[20px] font-semibold lg:text-[18px]">세차장 운영 컨설팅 →</p>
-                <p className="mt-[8px] text-[14px] text-secondaryDefault">매출 증대·객단가·비수기 전략</p>
+                <p className="mt-[8px] text-[20px] font-semibold lg:text-[18px]">
+                  세차장 운영 컨설팅 →
+                </p>
+                <p className="mt-[8px] text-[14px] text-secondaryDefault">
+                  매출 증대·객단가·비수기 전략
+                </p>
               </Link>
             </li>
           </ul>
@@ -298,7 +380,8 @@ export default function ConsultingPage() {
             세차장 컨설팅 자주 묻는 질문
           </h2>
           <p className="mt-[12px] text-center text-[16px] text-secondaryDefault lg:text-[14px]">
-            창업·리모델링·시스템 도입을 검토하시는 분들이 가장 자주 묻는 질문을 모았습니다.
+            창업·리모델링·시스템 도입을 검토하시는 분들이 가장 자주 묻는 질문을
+            모았습니다.
           </p>
           <div className="mt-[40px] flex flex-col gap-[12px]">
             {FAQ.map((f) => (
@@ -323,7 +406,9 @@ export default function ConsultingPage() {
               세차장 운영, 더 이상 혼자 고민하지 마세요.
             </h2>
             <p className="mt-[12px] text-[16px] leading-[24px] text-white/70 lg:text-[14px]">
-              창업·리모델링·시스템 도입·운영 — 어느 단계든 무료로 상담드립니다.<br />
+              창업, 리모델링, 시스템 도입, 운영까지 어느 단계에 계시든 무료로
+              상담해 드립니다.
+              <br />
               지금 바로 워시펀 컨설팅 팀에 연락 주세요.
             </p>
             <div className="mt-[28px] flex items-center justify-center gap-[12px] lg:flex-col">
@@ -344,6 +429,11 @@ export default function ConsultingPage() {
         </section>
       </main>
       <div className="box-border w-full px-[120px] lg:px-[16px]">
+        <p className="mx-auto mb-[24px] max-w-[1200px] break-keep px-[24px] text-[12px] leading-[1.6] text-secondaryDefault">
+          * 객단가 14.1%는 셀프 세차 사용 이력 14,541건 중 RF 기준금액 추정이
+          가능한 2,696건을 같은 조건으로 비교한 값이며, 구독 고객 월 평균 방문
+          3.8회·비구독 1.1회는 워시펀 특정 도입 매장 실측 기준입니다.
+        </p>
         <Footer />
       </div>
     </>

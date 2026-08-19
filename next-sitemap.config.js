@@ -9,6 +9,8 @@ module.exports = {
   generateIndexSitemap: true,
   priority: 0.7,
   exclude: [
+    "/icon.ico",
+    "/subscription/*",
     "/inquiry",
     "/inquiry/*",
     "/term-of-service",
@@ -31,6 +33,9 @@ module.exports = {
       "/consulting/remodeling": 0.9,
       "/consulting/system": 0.9,
       "/consulting/operations": 0.9,
+      "/devices": 0.85,
+      "/devices/self-wash": 0.9,
+      "/devices/auto-wash": 0.9,
       "/service": 0.85,
       "/contact": 0.85,
     };
@@ -38,39 +43,21 @@ module.exports = {
       loc: path,
       changefreq: config.changefreq,
       priority: priorityMap[path] ?? 0.7,
-      lastmod: new Date().toISOString(),
+      // 커스텀 transform 은 기본 lastmod 를 덮어쓴다. 직접 넣어야 남는다.
+      lastmod: config.autoLastmod ? new Date().toISOString() : undefined,
     };
   },
-  additionalPaths: async () => [
-    { loc: "/" },
-    { loc: "/consulting" },
-    { loc: "/consulting/start-business" },
-    { loc: "/consulting/self-wash" },
-    { loc: "/consulting/auto-wash" },
-    { loc: "/consulting/remodeling" },
-    { loc: "/consulting/system" },
-    { loc: "/consulting/operations" },
-    { loc: "/service" },
-    { loc: "/contact" },
-  ],
   robotsTxtOptions: {
     policies: [
       {
         userAgent: "*",
         allow: "/",
         disallow: [
+          // 약관·개인정보처리방침은 색인을 막지 않는다.
+          // 사업자 신뢰 신호이고, 사이트맵에서만 빼면 충분하다.
           "/inquiry",
-          "/term-of-service",
-          "/terms-of-service",
-          "/terms-of-service-kiosk",
-          "/terms-of-privacy",
-          "/terms-of-privacy-kiosk",
-          "/terms-of-digital",
-          "/terms-of-location",
-          "/privacy-policy",
         ],
       },
     ],
-    additionalSitemaps: [`${SITE_URL}/sitemap.xml`],
   },
 };

@@ -1,10 +1,14 @@
 {
   "root": true,
-  "extends": ["plugin:tailwindcss/recommended"],
+  "extends": [
+    "next/core-web-vitals",
+    "plugin:tailwindcss/recommended"
+  ],
   "parser": "@typescript-eslint/parser",
   "rules": {
     "tailwindcss/classnames-order": "warn",
     "tailwindcss/no-custom-classname": "warn",
-    "tailwindcss/no-contradicting-classname": "error"
+    "tailwindcss/no-contradicting-classname": "error",
+    "react/no-unescaped-entities": "off"
   }
 }

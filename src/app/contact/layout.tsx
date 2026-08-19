@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 
-const title = "세차장 컨설팅 문의 — 워시펀 도입 상담";
+const title = "세차장 컨설팅 문의 및 워시펀 도입 상담";
 const description =
   "세차장 창업, 리모델링, 시스템 도입, 운영 컨설팅까지 워시펀이 도와드립니다. 전화 070-8806-8088 또는 contact@washfun.fun 으로 무료 상담을 신청하세요. 직영·가맹·개인 운영 세차장 모두 가능합니다.";
 

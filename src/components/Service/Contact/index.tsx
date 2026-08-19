@@ -22,23 +22,19 @@ const Contact = () => {
       templateID !== undefined &&
       publicKey !== undefined
     ) {
-      emailjs
-        .sendForm(serviceID, templateID, form.current, { publicKey })
-        .then(
-          (result) => {
-            console.log(result.text);
-            (e.target as HTMLFormElement).reset();
-            setModalOpen(false);
-            track("lead_submit", { source: "contact_form", status: "success" });
-            alert("문의가 성공적으로 전송되었습니다.");
-          },
-          (error) => {
-            console.log(error.text);
-            console.log(error);
-            track("lead_submit", { source: "contact_form", status: "fail" });
-            alert("문의 전송에 실패했습니다. 다시 시도해주세요.");
-          }
-        );
+      emailjs.sendForm(serviceID, templateID, form.current, { publicKey }).then(
+        () => {
+          (e.target as HTMLFormElement).reset();
+          setModalOpen(false);
+          track("lead_submit", { source: "contact_form", status: "success" });
+          alert("문의가 성공적으로 전송되었습니다.");
+        },
+        (error) => {
+          console.error("contact submit failed", error);
+          track("lead_submit", { source: "contact_form", status: "fail" });
+          alert("문의 전송에 실패했습니다. 다시 시도해주세요.");
+        },
+      );
     } else {
       alert("문의 전송에 실패했습니다. 다시 시도해주세요...");
     }
@@ -46,7 +42,7 @@ const Contact = () => {
 
   const onClickContactBtn = () => {
     if (form.current) {
-      const required = ["name", "phone", "content"];
+      const required = ["name", "phone"];
       const elements = form.current.elements;
       const missing = required.find((n) => {
         const el = elements.namedItem(n) as HTMLInputElement | null;
@@ -56,7 +52,7 @@ const Contact = () => {
         track("lead_cta_click", { source: "contact_form_submit_open" });
         setModalOpen(true);
       } else {
-        alert("이름, 연락처, 문의 사항은 필수 항목입니다.");
+        alert("이름과 연락처는 필수 항목입니다.");
       }
     }
   };
@@ -68,18 +64,34 @@ const Contact = () => {
     >
       <div className="flex size-full py-20 pb-10 lg:flex-col md:flex-col">
         <div className="mt-44 flex flex-[2] flex-col items-start gap-4 text-2xl font-semibold lg:items-start md:mt-0 md:px-6">
-          <h2 id="contact-heading" className="ml-20 text-3xl font-bold md:ml-0 md:text-2xl">
+          <h2
+            id="contact-heading"
+            className="ml-20 break-keep text-3xl font-bold md:ml-0 md:text-2xl"
+          >
             세차장 컨설팅 무료 상담
           </h2>
           <p className="ml-20 mr-20 text-base font-normal leading-[26px] text-gray md:mx-0 md:text-sm">
-            창업·리모델링·시스템 도입·운영 어떤 단계든 워시펀 팀이 함께합니다.<br className="md:hidden" />
+            창업·리모델링·시스템 도입·운영 어떤 단계든 워시펀 팀이 함께합니다.
+            <br className="md:hidden" />
             아래 폼에 이름과 연락처만 남겨주시면 1영업일 내 연락드립니다.
           </p>
           <div className="ml-20 mt-2 flex flex-col gap-1 text-base font-normal text-gray md:ml-0 md:text-sm">
-            <a href="tel:+82-70-8806-8088" className="underline" onClick={() => track("lead_cta_click", { source: "contact_page_tel" })}>
+            <a
+              href="tel:+82-70-8806-8088"
+              className="underline"
+              onClick={() =>
+                track("lead_cta_click", { source: "contact_page_tel" })
+              }
+            >
               ☎ 070-8806-8088
             </a>
-            <a href="mailto:contact@washfun.fun" className="underline" onClick={() => track("lead_cta_click", { source: "contact_page_email" })}>
+            <a
+              href="mailto:contact@washfun.fun"
+              className="underline"
+              onClick={() =>
+                track("lead_cta_click", { source: "contact_page_email" })
+              }
+            >
               ✉ contact@washfun.fun
             </a>
           </div>
@@ -87,11 +99,13 @@ const Contact = () => {
         <form
           ref={form}
           onSubmit={sendEmail}
-          className="flex-[3] p-32 md:mt-20 md:justify-center md:p-0"
+          className="flex-[3] p-32 2xl:p-10 md:mt-20 md:justify-center md:p-0"
         >
           <div className="flex md:flex-col md:gap-6">
-            <div className="mx-10 flex min-w-[200px] flex-1 flex-col">
-              <label htmlFor="contact-name" className="sr-only">이름</label>
+            <div className="mx-10 flex min-w-0 flex-1 flex-col">
+              <label htmlFor="contact-name" className="sr-only">
+                이름
+              </label>
               <input
                 id="contact-name"
                 className="h-9 w-full rounded-md border border-lightGray pl-5 outline-none placeholder:text-sm focus:border-primary focus:outline-none"
@@ -102,8 +116,10 @@ const Contact = () => {
                 autoComplete="name"
               />
             </div>
-            <div className="mx-10 flex min-w-[200px] flex-1 flex-col">
-              <label htmlFor="contact-phone" className="sr-only">전화번호</label>
+            <div className="mx-10 flex min-w-0 flex-1 flex-col">
+              <label htmlFor="contact-phone" className="sr-only">
+                전화번호
+              </label>
               <input
                 id="contact-phone"
                 className="h-9 w-full rounded-md border border-lightGray pl-5 placeholder:text-sm focus:border-primary focus:outline-none"
@@ -116,8 +132,10 @@ const Contact = () => {
             </div>
           </div>
           <div className="mt-6 flex md:flex-col md:gap-6">
-            <div className="mx-10 flex min-w-[200px] flex-1 flex-col">
-              <label htmlFor="contact-email" className="sr-only">이메일</label>
+            <div className="mx-10 flex min-w-0 flex-1 flex-col">
+              <label htmlFor="contact-email" className="sr-only">
+                이메일
+              </label>
               <input
                 id="contact-email"
                 className="h-9 w-full rounded-md border border-lightGray pl-5 outline-none placeholder:text-sm focus:border-primary focus:outline-none"
@@ -127,8 +145,10 @@ const Contact = () => {
                 autoComplete="email"
               />
             </div>
-            <div className="mx-10 flex min-w-[200px] flex-1 flex-col">
-              <label htmlFor="contact-store" className="sr-only">상호명</label>
+            <div className="mx-10 flex min-w-0 flex-1 flex-col">
+              <label htmlFor="contact-store" className="sr-only">
+                상호명
+              </label>
               <input
                 id="contact-store"
                 className="h-9 w-full rounded-md border border-lightGray pl-5 outline-none placeholder:text-sm focus:border-primary focus:outline-none"
@@ -139,8 +159,10 @@ const Contact = () => {
             </div>
           </div>
           <div className="mt-6 flex md:flex-col md:gap-6">
-            <div className="mx-10 flex min-w-[200px] flex-1 flex-col">
-              <label htmlFor="contact-address" className="sr-only">사업장 주소</label>
+            <div className="mx-10 flex min-w-0 flex-1 flex-col">
+              <label htmlFor="contact-address" className="sr-only">
+                사업장 주소
+              </label>
               <input
                 id="contact-address"
                 className="h-9 w-full rounded-md border border-lightGray pl-5 outline-none placeholder:text-sm focus:border-primary focus:outline-none"
@@ -149,8 +171,10 @@ const Contact = () => {
                 placeholder="사업장 주소 (선택)"
               />
             </div>
-            <div className="mx-10 flex min-w-[200px] flex-1 flex-col">
-              <label htmlFor="contact-stage" className="sr-only">문의 단계</label>
+            <div className="mx-10 flex min-w-0 flex-1 flex-col">
+              <label htmlFor="contact-stage" className="sr-only">
+                문의 단계
+              </label>
               <select
                 id="contact-stage"
                 name="stage"
@@ -169,8 +193,10 @@ const Contact = () => {
             </div>
           </div>
           <div className="mt-6 flex md:flex-col md:gap-6">
-            <div className="mx-10 flex min-w-[200px] flex-1 flex-col">
-              <label htmlFor="contact-bay" className="sr-only">베이 수</label>
+            <div className="mx-10 flex min-w-0 flex-1 flex-col">
+              <label htmlFor="contact-bay" className="sr-only">
+                베이 수
+              </label>
               <input
                 id="contact-bay"
                 className="h-9 w-full rounded-md border border-lightGray pl-5 outline-none placeholder:text-sm focus:border-primary focus:outline-none"
@@ -179,26 +205,29 @@ const Contact = () => {
                 placeholder="베이 수 (선택)"
               />
             </div>
-            <div className="mx-10 flex min-w-[200px] flex-1 flex-col">
-              <label htmlFor="contact-year" className="sr-only">운영 년차</label>
+            <div className="mx-10 flex min-w-0 flex-1 flex-col">
+              <label htmlFor="contact-year" className="sr-only">
+                운영 연차
+              </label>
               <input
                 id="contact-year"
                 className="h-9 w-full rounded-md border border-lightGray pl-5 outline-none placeholder:text-sm focus:border-primary focus:outline-none"
                 type="text"
                 name="year"
-                placeholder="운영 년차 (선택)"
+                placeholder="운영 연차 (선택)"
               />
             </div>
           </div>
           <div className="mt-6 flex">
             <div className="mx-10 flex flex-1 flex-col">
-              <label htmlFor="contact-content" className="mb-4 pl-2">문의 사항 (필수)</label>
+              <label htmlFor="contact-content" className="mb-4 pl-2">
+                문의 사항 (선택)
+              </label>
               <textarea
                 id="contact-content"
                 className="h-44 w-full resize-none rounded-md border border-lightGray py-2 pl-5 outline-none focus:border-primary focus:outline-none"
                 name="content"
                 placeholder="궁금하신 내용을 자유롭게 적어주세요. 예: 신규 창업 검토 중인데 예상 비용이 궁금합니다."
-                required
               />
             </div>
           </div>
@@ -206,17 +235,13 @@ const Contact = () => {
             <button
               type="button"
               onClick={onClickContactBtn}
-              className="mx-10 mt-6 w-36 cursor-pointer rounded-md bg-primary p-2 text-center text-base text-white opacity-80 transition hover:opacity-100"
+              className="mx-10 mt-6 w-36 cursor-pointer rounded-md bg-main p-2 text-center text-base text-white transition hover:brightness-110 transition hover:opacity-100"
               aria-label="워시펀 컨설팅 문의 보내기"
             >
               문의하기
             </button>
           </div>
-          <Modal
-            isOpen={modalOpen}
-            onClose={() => setModalOpen(false)}
-            onSubmit={sendEmail}
-          />
+          <Modal isOpen={modalOpen} onClose={() => setModalOpen(false)} />
         </form>
       </div>
     </section>

@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Script from "next/script";
 import localFont from "next/font/local";
 import "./globals.css";
 import GoogleAnalytics from "@/lib/GoogleAnalytics";
@@ -59,10 +58,9 @@ const pretendard = localFont({
 
 const SITE_URL = "https://www.lifedivergence.com";
 const SITE_NAME = "워시펀 WashFun";
-const DEFAULT_TITLE =
-  "워시펀 WashFun | 세차장 결제 솔루션 혁신";
+const DEFAULT_TITLE = "워시펀 WashFun | 세차장 결제 솔루션 혁신";
 const DEFAULT_DESCRIPTION =
-  "세차장 창업, 리모델링, 무인 시스템 도입까지 — 워시펀이 함께합니다. RF카드를 대체하는 후불제 셀프 세차, 구독제 자동 세차, 점주용 관리 시스템과 운영 컨설팅을 무료 상담받아 보세요.";
+  "세차장 창업부터 리모델링, 무인 시스템 도입까지 워시펀이 함께합니다. RF카드를 대체하는 후불제 셀프 세차, 구독제 자동 세차, 사장님 관리 시스템과 운영 컨설팅을 무료로 상담해 드립니다.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -103,14 +101,6 @@ export const metadata: Metadata = {
   creator: "라이프다이버전스",
   publisher: "라이프다이버전스",
   category: "Business",
-  formatDetection: {
-    telephone: true,
-    email: true,
-    address: true,
-  },
-  alternates: {
-    canonical: "/",
-  },
   openGraph: {
     type: "website",
     locale: "ko_KR",
@@ -121,8 +111,8 @@ export const metadata: Metadata = {
     images: [
       {
         url: "/images/png/cover-page.png",
-        width: 1200,
-        height: 630,
+        width: 1920,
+        height: 1038,
         alt: "워시펀 세차장 솔루션 대시보드",
       },
     ],
@@ -147,8 +137,7 @@ export const metadata: Metadata = {
   verification: {
     google: "rFOt_n-IDumlpzicrWEfpl9ctFdZW62a2IkNIanTBaM",
     other: {
-      "naver-site-verification":
-        "d983fee3f0b7db68efd9a65aa2ebd48490c11d92",
+      "naver-site-verification": "d983fee3f0b7db68efd9a65aa2ebd48490c11d92",
     },
   },
 };
@@ -156,6 +145,7 @@ export const metadata: Metadata = {
 const organizationJsonLd = {
   "@context": "https://schema.org",
   "@type": "Organization",
+  "@id": `${SITE_URL}#organization`,
   name: "워시펀 WashFun",
   legalName: "주식회사 라이프다이버전스",
   url: SITE_URL,
@@ -198,30 +188,6 @@ const websiteJsonLd = {
   },
 };
 
-const professionalServiceJsonLd = {
-  "@context": "https://schema.org",
-  "@type": "ProfessionalService",
-  name: "워시펀 세차장 컨설팅",
-  url: `${SITE_URL}/consulting`,
-  image: `${SITE_URL}/images/png/cover-page.png`,
-  description:
-    "세차장 창업, 리모델링, 무인 시스템 도입, 운영 효율화까지 워시펀이 지원하는 세차장 종합 컨설팅 서비스.",
-  provider: {
-    "@type": "Organization",
-    name: "주식회사 라이프다이버전스",
-  },
-  areaServed: "KR",
-  telephone: "+82-70-8806-8088",
-  email: "contact@washfun.fun",
-  priceRange: "₩₩",
-  serviceType: [
-    "세차장 창업 컨설팅",
-    "세차장 리모델링 컨설팅",
-    "세차장 시스템 도입",
-    "세차장 운영 컨설팅",
-  ],
-};
-
 const localBusinessJsonLd = {
   "@context": "https://schema.org",
   "@type": "LocalBusiness",
@@ -258,7 +224,6 @@ const localBusinessJsonLd = {
     },
   ],
   sameAs: [
-    "https://www.instagram.com/wash.fun_official/",
     "https://www.hankookilbo.com/News/Read/A2024110614530001135",
     "https://www.news1.kr/industry/general-industry/5565629",
   ],
@@ -272,6 +237,12 @@ export default function RootLayout({
   return (
     <html lang="ko-KR" className={`${pretendard.variable}`}>
       <head>
+        {/* JS 사용 가능할 때만 등장 애니메이션 적용 */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: "document.documentElement.classList.add('js')",
+          }}
+        />
         <link rel="shortcut icon" href="/icon.ico" />
         <meta name="theme-color" content="#ffffff" />
         <meta name="format-detection" content="telephone=yes" />
@@ -280,32 +251,19 @@ export default function RootLayout({
         {process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS ? (
           <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS} />
         ) : null}
-        <Script
-          id="ld-organization"
+        {/* JSON-LD: 서버 렌더 (JS 미실행 크롤러 대응) */}
+        <script
           type="application/ld+json"
-          strategy="afterInteractive"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify(organizationJsonLd),
           }}
         />
-        <Script
-          id="ld-website"
+        <script
           type="application/ld+json"
-          strategy="afterInteractive"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }}
         />
-        <Script
-          id="ld-service"
+        <script
           type="application/ld+json"
-          strategy="afterInteractive"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify(professionalServiceJsonLd),
-          }}
-        />
-        <Script
-          id="ld-localbusiness"
-          type="application/ld+json"
-          strategy="afterInteractive"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify(localBusinessJsonLd),
           }}
