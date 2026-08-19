@@ -2,10 +2,11 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Header from "@/components/common/Header";
 import Footer from "@/components/HomeV2/Footer";
+import { buildOg, buildTwitter } from "@/lib/seo";
 
 const SITE_URL = "https://www.lifedivergence.com";
 
-const title = "세차장 창업·리모델링·시스템 도입 종합 컨설팅";
+const title = "세차장 창업·리모델링·시스템 도입 컨설팅";
 const description =
   "세차장 개업을 고민 중이거나, 기존 매장 리모델링·무인 시스템 도입·운영 효율화를 검토하시나요? 워시펀이 창업비용 분석부터 후불제 셀프 세차, 구독제 자동 세차, 사장님 관리 시스템까지 한 번에 컨설팅합니다. 무료 상담 신청.";
 
@@ -33,26 +34,13 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "/consulting",
   },
-  openGraph: {
-    type: "website",
-    locale: "ko_KR",
-    url: "/consulting",
+  openGraph: buildOg({
     title,
     description,
-    images: [
-      {
-        url: "/images/png/cover-page.png",
-        width: 1200,
-        height: 630,
-        alt: "워시펀 세차장 컨설팅",
-      },
-    ],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title,
-    description,
-  },
+    path: "/consulting",
+    alt: "워시펀 세차장 컨설팅",
+  }),
+  twitter: buildTwitter({ title, description }),
 };
 
 const FAQ = [
@@ -164,7 +152,7 @@ const SEGMENTS = [
 
 const professionalServiceJsonLd = {
   "@context": "https://schema.org",
-  "@type": "ProfessionalService",
+  "@type": "Service",
   name: "워시펀 세차장 컨설팅",
   "@id": `${SITE_URL}/consulting#service`,
   url: `${SITE_URL}/consulting`,
@@ -175,7 +163,6 @@ const professionalServiceJsonLd = {
   areaServed: "KR",
   telephone: "+82-70-8806-8088",
   email: "contact@washfun.fun",
-  priceRange: "₩₩",
   serviceType: [
     "세차장 창업 컨설팅",
     "세차장 리모델링 컨설팅",

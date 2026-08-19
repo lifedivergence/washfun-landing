@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import LongTailPage, { LongTailContent } from "@/components/consulting/LongTailPage";
+import { buildOg, buildTwitter } from "@/lib/seo";
 
 const title =
   "세차장 창업비용·수익·절차 가이드";
@@ -27,15 +28,13 @@ export const metadata: Metadata = {
     "워시펀 컨설팅",
   ],
   alternates: { canonical: "/consulting/start-business" },
-  openGraph: {
-    type: "website",
-    locale: "ko_KR",
-    url: "/consulting/start-business",
+  openGraph: buildOg({
     title,
     description,
-    images: [{ url: "/images/png/cover-page.png", width: 1200, height: 630, alt: "세차장 창업 컨설팅" }],
-  },
-  twitter: { card: "summary_large_image", title, description },
+    path: "/consulting/start-business",
+    alt: "세차장 창업 컨설팅",
+  }),
+  twitter: buildTwitter({ title, description }),
 };
 
 const content: LongTailContent = {

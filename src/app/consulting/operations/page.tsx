@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 import LongTailPage, { LongTailContent } from "@/components/consulting/LongTailPage";
+import { buildOg, buildTwitter } from "@/lib/seo";
 
 const title =
-  "세차장 매출 증대·객단가·비수기 전략 운영 컨설팅";
+  "세차장 운영 컨설팅과 매출 증대 전략";
 const description =
   "이미 세차장을 운영 중이신가요? 매출 분석, 변동 요금제, 구독 고객 확보, 비수기 매출 안정화, 객단가 증대까지 운영 컨설팅으로 지원합니다. 워시펀 무료 상담.";
 
@@ -24,15 +25,13 @@ export const metadata: Metadata = {
     "워시펀 운영 컨설팅",
   ],
   alternates: { canonical: "/consulting/operations" },
-  openGraph: {
-    type: "website",
-    locale: "ko_KR",
-    url: "/consulting/operations",
+  openGraph: buildOg({
     title,
     description,
-    images: [{ url: "/images/png/cover-page.png", width: 1200, height: 630, alt: "세차장 운영 컨설팅" }],
-  },
-  twitter: { card: "summary_large_image", title, description },
+    path: "/consulting/operations",
+    alt: "세차장 운영 컨설팅",
+  }),
+  twitter: buildTwitter({ title, description }),
 };
 
 const content: LongTailContent = {

@@ -54,6 +54,7 @@ const heroSpots: IsoSpot[] = [
     desc: "매장 전용 AP·컨트롤러·라우터. 모든 설비를 하나의 관리망으로 묶습니다.",
   },
 ];
+import { buildOg, buildTwitter } from "@/lib/seo";
 
 const title = "셀프 세차장 설비 6종";
 const description =
@@ -75,22 +76,13 @@ export const metadata: Metadata = {
     "후불제 셀프 세차",
   ],
   alternates: { canonical: "/devices/self-wash" },
-  openGraph: {
-    type: "website",
-    locale: "ko_KR",
-    url: "/devices/self-wash",
+  openGraph: buildOg({
     title,
     description,
-    images: [
-      {
-        url: "/images/png/cover-page.png",
-        width: 1200,
-        height: 630,
-        alt: "워시펀 셀프 세차장 시스템",
-      },
-    ],
-  },
-  twitter: { card: "summary_large_image", title, description },
+    path: "/devices/self-wash",
+    alt: "워시펀 셀프 세차장 시스템",
+  }),
+  twitter: buildTwitter({ title, description }),
 };
 
 const content: DeviceSystemContent = {

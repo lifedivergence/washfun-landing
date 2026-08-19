@@ -101,7 +101,25 @@ export default function SystemMap() {
         />
       </Reveal>
 
-      <div className="mt-[24px] flex items-center justify-center gap-[12px] lg:flex-col">
+      {/* 아이소맵 핫스팟 설명은 클릭해야 나온다. JS 를 실행하지 않는 크롤러를 위해
+          같은 내용을 목록으로도 내보낸다. */}
+      <ul className="mt-[24px] grid grid-cols-2 gap-x-[24px] gap-y-[16px] lg:grid-cols-1">
+        {SPOTS.map((s) => (
+          <li key={s.id} className="break-keep">
+            <Link
+              href={s.href ?? "/devices"}
+              className="text-[15px] font-bold text-black hover:text-main"
+            >
+              {s.name}
+            </Link>
+            <p className="mt-[2px] text-[14px] leading-[1.6] text-secondaryDefault">
+              {s.desc}
+            </p>
+          </li>
+        ))}
+      </ul>
+
+      <div className="mt-[32px] flex items-center justify-center gap-[12px] lg:flex-col">
         <Link
           href="/devices/self-wash"
           className="rounded-full bg-main px-[28px] py-[14px] text-[16px] font-bold text-white transition hover:brightness-110 lg:w-full lg:text-center"

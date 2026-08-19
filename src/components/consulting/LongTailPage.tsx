@@ -66,18 +66,11 @@ export default function LongTailPage({
     inLanguage: "ko-KR",
     url,
     primaryImageOfPage: `${SITE_URL}/images/png/cover-page.png`,
-    isPartOf: {
-      "@type": "WebSite",
-      name: "워시펀 WashFun",
-      url: SITE_URL,
-    },
+    isPartOf: { "@id": `${SITE_URL}#website` },
     about: {
       "@type": "Service",
       name: content.breadcrumbName,
-      provider: {
-        "@type": "Organization",
-        name: "주식회사 라이프다이버전스",
-      },
+      provider: { "@id": `${SITE_URL}#organization` },
     },
   };
 

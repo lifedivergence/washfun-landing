@@ -8,7 +8,7 @@ import { LEGAL_LINKS } from "@/lib/legal";
 export default function Footer() {
   return (
     <footer
-      className="mt-[200px] flex flex-row justify-between break-keep pb-[120px] pt-[80px] lg:flex-col-reverse"
+      className="mt-[200px] flex flex-row justify-between break-keep pb-[120px] pt-[80px] xl:flex-col-reverse"
       aria-label="워시펀 푸터"
     >
       <div>
@@ -23,22 +23,22 @@ export default function Footer() {
           </Link>
         </div>
         <div className="mt-[24px] flex flex-col gap-[8px] lg:gap-[14px]">
-          <div className="flex items-center gap-[8px] lg:flex-col lg:items-start lg:gap-[4px]">
-            <p className="text-[14px] font-medium text-secondaryDefault">
+          <div className="flex items-start gap-[8px] xl:flex-col xl:gap-[4px]">
+            <p className="w-[150px] shrink-0 text-[14px] font-medium text-secondaryDefault xl:w-auto">
               상호명
             </p>
             <p className="text-[14px] font-medium text-black">
               (주)라이프다이버전스
             </p>
           </div>
-          <div className="flex items-center gap-[8px] lg:flex-col lg:items-start lg:gap-[4px]">
-            <p className="text-[14px] font-medium text-secondaryDefault">
+          <div className="flex items-start gap-[8px] xl:flex-col xl:gap-[4px]">
+            <p className="w-[150px] shrink-0 text-[14px] font-medium text-secondaryDefault xl:w-auto">
               대표명
             </p>
             <p className="text-[14px] font-medium text-black">김동영</p>
           </div>
-          <div className="flex items-center gap-[8px] lg:flex-col lg:items-start lg:gap-[4px]">
-            <p className="text-[14px] font-medium text-secondaryDefault">
+          <div className="flex items-start gap-[8px] xl:flex-col xl:gap-[4px]">
+            <p className="w-[150px] shrink-0 text-[14px] font-medium text-secondaryDefault xl:w-auto">
               사업자등록번호
             </p>
             <p className="text-[14px] font-medium text-black">
@@ -46,24 +46,24 @@ export default function Footer() {
               세차업
             </p>
           </div>
-          <div className="flex items-center gap-[8px] lg:flex-col lg:items-start lg:gap-[4px]">
-            <p className="text-[14px] font-medium text-secondaryDefault">
+          <div className="flex items-start gap-[8px] xl:flex-col xl:gap-[4px]">
+            <p className="w-[150px] shrink-0 text-[14px] font-medium text-secondaryDefault xl:w-auto">
               주소
             </p>
             <p className="text-[14px] font-medium text-black">
               울산광역시 중구 종가6길 21, 우정혁신타워 605호
             </p>
           </div>
-          <div className="flex items-center gap-[8px] lg:flex-col lg:items-start lg:gap-[4px]">
-            <p className="text-[14px] font-medium text-secondaryDefault">
+          <div className="flex items-start gap-[8px] xl:flex-col xl:gap-[4px]">
+            <p className="w-[150px] shrink-0 text-[14px] font-medium text-secondaryDefault xl:w-auto">
               통신판매 신고번호
             </p>
             <p className="text-[14px] font-medium text-black">
               2024-울산중구-0396
             </p>
           </div>
-          <div className="flex items-center gap-[8px] lg:flex-col lg:items-start lg:gap-[4px]">
-            <p className="text-[14px] font-medium text-secondaryDefault">
+          <div className="flex items-start gap-[8px] xl:flex-col xl:gap-[4px]">
+            <p className="w-[150px] shrink-0 text-[14px] font-medium text-secondaryDefault xl:w-auto">
               개인정보 처리방침 및 기타문의사항
             </p>
             <p className="text-[14px] font-medium text-black">
@@ -91,7 +91,7 @@ export default function Footer() {
         </div>
       </div>
       <nav
-        className="flex gap-[80px] px-[80px] xl:gap-[32px] xl:px-[16px] lg:mb-[48px] lg:flex-col lg:gap-[24px] lg:px-0"
+        className="grid shrink-0 grid-cols-2 gap-x-[48px] gap-y-[36px] pl-[48px] xl:mb-[48px] xl:pl-0 lg:grid-cols-1 lg:gap-[24px]"
         aria-label="푸터 메뉴"
       >
         <div>
@@ -99,31 +99,31 @@ export default function Footer() {
           <div className="mt-[16px] flex flex-col gap-[12px]">
             <Link
               href="/service"
-              className="text-[16px] font-normal text-secondaryDefault hover:text-black"
+              className="whitespace-nowrap text-[16px] font-normal text-secondaryDefault hover:text-black"
             >
               사장님 대시보드
             </Link>
             <Link
               href="/consulting/auto-wash"
-              className="text-[16px] font-normal text-secondaryDefault hover:text-black"
+              className="whitespace-nowrap text-[16px] font-normal text-secondaryDefault hover:text-black"
             >
               자동 세차
             </Link>
             <Link
               href="/consulting/self-wash"
-              className="text-[16px] font-normal text-secondaryDefault hover:text-black"
+              className="whitespace-nowrap text-[16px] font-normal text-secondaryDefault hover:text-black"
             >
               셀프 세차
             </Link>
             <Link
               href="/devices/self-wash"
-              className="text-[16px] font-normal text-secondaryDefault hover:text-black"
+              className="whitespace-nowrap text-[16px] font-normal text-secondaryDefault hover:text-black"
             >
               셀프 세차장 설비
             </Link>
             <Link
               href="/devices/auto-wash"
-              className="text-[16px] font-normal text-secondaryDefault hover:text-black"
+              className="whitespace-nowrap text-[16px] font-normal text-secondaryDefault hover:text-black"
             >
               자동 세차장 설비
             </Link>
@@ -134,25 +134,25 @@ export default function Footer() {
           <div className="mt-[16px] flex flex-col gap-[12px]">
             <Link
               href="/consulting/start-business"
-              className="text-[16px] font-normal text-secondaryDefault hover:text-black"
+              className="whitespace-nowrap text-[16px] font-normal text-secondaryDefault hover:text-black"
             >
               세차장 창업
             </Link>
             <Link
               href="/consulting/remodeling"
-              className="text-[16px] font-normal text-secondaryDefault hover:text-black"
+              className="whitespace-nowrap text-[16px] font-normal text-secondaryDefault hover:text-black"
             >
               세차장 리모델링
             </Link>
             <Link
               href="/consulting/system"
-              className="text-[16px] font-normal text-secondaryDefault hover:text-black"
+              className="whitespace-nowrap text-[16px] font-normal text-secondaryDefault hover:text-black"
             >
               시스템 도입
             </Link>
             <Link
               href="/consulting/operations"
-              className="text-[16px] font-normal text-secondaryDefault hover:text-black"
+              className="whitespace-nowrap text-[16px] font-normal text-secondaryDefault hover:text-black"
             >
               운영 컨설팅
             </Link>
@@ -166,7 +166,7 @@ export default function Footer() {
               onClick={() =>
                 track("lead_cta_click", { source: "footer_contact" })
               }
-              className="text-[16px] font-normal text-secondaryDefault hover:text-black"
+              className="whitespace-nowrap text-[16px] font-normal text-secondaryDefault hover:text-black"
             >
               온라인 문의하기
             </Link>
@@ -200,7 +200,7 @@ export default function Footer() {
                 href={l.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-[16px] font-normal text-secondaryDefault hover:text-black"
+                className="whitespace-nowrap text-[16px] font-normal text-secondaryDefault hover:text-black"
               >
                 {l.label}
               </a>

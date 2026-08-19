@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import LongTailPage, { LongTailContent } from "@/components/consulting/LongTailPage";
+import { buildOg, buildTwitter } from "@/lib/seo";
 
 const title =
   "자동세차장 창업 비용과 수익";
@@ -23,15 +24,13 @@ export const metadata: Metadata = {
     "워시펀 자동세차",
   ],
   alternates: { canonical: "/consulting/auto-wash" },
-  openGraph: {
-    type: "website",
-    locale: "ko_KR",
-    url: "/consulting/auto-wash",
+  openGraph: buildOg({
     title,
     description,
-    images: [{ url: "/images/png/cover-page.png", width: 1200, height: 630, alt: "자동세차장 창업" }],
-  },
-  twitter: { card: "summary_large_image", title, description },
+    path: "/consulting/auto-wash",
+    alt: "자동세차장 창업",
+  }),
+  twitter: buildTwitter({ title, description }),
 };
 
 const content: LongTailContent = {

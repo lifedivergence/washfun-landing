@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import LongTailPage, {
   LongTailContent,
 } from "@/components/consulting/LongTailPage";
+import { buildOg, buildTwitter } from "@/lib/seo";
 
 const title = "세차장 무인 시스템 도입 가이드";
 const description =
@@ -25,22 +26,13 @@ export const metadata: Metadata = {
     "워시펀 시스템",
   ],
   alternates: { canonical: "/consulting/system" },
-  openGraph: {
-    type: "website",
-    locale: "ko_KR",
-    url: "/consulting/system",
+  openGraph: buildOg({
     title,
     description,
-    images: [
-      {
-        url: "/images/png/cover-page.png",
-        width: 1200,
-        height: 630,
-        alt: "세차장 무인 시스템 도입",
-      },
-    ],
-  },
-  twitter: { card: "summary_large_image", title, description },
+    path: "/consulting/system",
+    alt: "세차장 무인 시스템 도입",
+  }),
+  twitter: buildTwitter({ title, description }),
 };
 
 const content: LongTailContent = {

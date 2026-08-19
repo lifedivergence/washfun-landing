@@ -54,6 +54,7 @@ const heroSpots: IsoSpot[] = [
     desc: "매장 전용 AP·컨트롤러·라우터. 카메라·키오스크·세차기를 하나로 묶습니다.",
   },
 ];
+import { buildOg, buildTwitter } from "@/lib/seo";
 
 const title = "자동 세차장 설비 6종";
 const description =
@@ -78,22 +79,13 @@ export const metadata: Metadata = {
     "자동세차기 관리 시스템",
   ],
   alternates: { canonical: "/devices/auto-wash" },
-  openGraph: {
-    type: "website",
-    locale: "ko_KR",
-    url: "/devices/auto-wash",
+  openGraph: buildOg({
     title,
     description,
-    images: [
-      {
-        url: "/images/png/cover-page.png",
-        width: 1200,
-        height: 630,
-        alt: "워시펀 자동 세차장 시스템",
-      },
-    ],
-  },
-  twitter: { card: "summary_large_image", title, description },
+    path: "/devices/auto-wash",
+    alt: "워시펀 자동 세차장 시스템",
+  }),
+  twitter: buildTwitter({ title, description }),
 };
 
 const content: DeviceSystemContent = {

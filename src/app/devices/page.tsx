@@ -4,6 +4,7 @@ import Header from "@/components/common/Header";
 import Footer from "@/components/HomeV2/Footer";
 import Banner from "@/components/HomeV2/Banner";
 import Reveal from "@/components/common/Reveal";
+import { buildOg, buildTwitter } from "@/lib/seo";
 
 const SITE_URL = "https://www.lifedivergence.com";
 
@@ -25,14 +26,13 @@ export const metadata: Metadata = {
     "워시펀 설비",
   ],
   alternates: { canonical: "/devices" },
-  openGraph: {
-    type: "website",
-    locale: "ko_KR",
-    url: "/devices",
+  openGraph: buildOg({
     title,
     description,
-  },
-  twitter: { card: "summary_large_image", title, description },
+    path: "/devices",
+    alt: "워시펀 세차장 설비",
+  }),
+  twitter: buildTwitter({ title, description }),
 };
 
 const TYPES = [

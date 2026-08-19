@@ -8,7 +8,7 @@ import { track } from "@/lib/analytics";
 
 const NAV_ITEMS = [
   { href: "/service", label: "사장님 대시보드" },
-  { href: "/devices/self-wash", label: "설비" },
+  { href: "/devices", label: "설비" },
   { href: "/consulting", label: "세차장 컨설팅" },
   { href: "/contact", label: "도입 문의" },
 ];

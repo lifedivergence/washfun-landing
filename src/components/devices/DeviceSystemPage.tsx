@@ -66,27 +66,11 @@ export default function DeviceSystemPage({
     ],
   };
 
-  const itemListJsonLd = {
-    "@context": "https://schema.org",
-    "@type": "ItemList",
-    name: `${content.breadcrumbName} 구성 설비`,
-    itemListElement: content.devices.map((d, i) => ({
-      "@type": "ListItem",
-      position: i + 1,
-      name: d.name,
-      description: d.role,
-    })),
-  };
-
   return (
     <div className="font-Pretendard text-black">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListJsonLd) }}
       />
       <Header />
 

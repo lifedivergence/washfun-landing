@@ -4,6 +4,8 @@ const SITE_URL = "https://www.lifedivergence.com";
 
 module.exports = {
   siteUrl: SITE_URL,
+  // 13개짜리 정적 사이트맵에 전부 같은 빌드 시각을 박으면 신호가 안 된다.
+  autoLastmod: false,
   changefreq: "weekly",
   generateRobotsTxt: true,
   generateIndexSitemap: true,
@@ -52,11 +54,9 @@ module.exports = {
       {
         userAgent: "*",
         allow: "/",
-        disallow: [
-          // 약관·개인정보처리방침은 색인을 막지 않는다.
-          // 사업자 신뢰 신호이고, 사이트맵에서만 빼면 충분하다.
-          "/inquiry",
-        ],
+        // /inquiry 는 (webview) 레이아웃에서 noindex 다. robots 로 막으면
+        // 크롤러가 그 noindex 를 읽지 못해 오히려 색인이 남는다.
+        disallow: [],
       },
     ],
   },

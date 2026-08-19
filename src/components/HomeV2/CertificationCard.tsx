@@ -140,7 +140,7 @@ export default function CertificationCard() {
             <div className="relative h-[156px] w-full">
               <Image
                 src="/images/v2/png/certification6.png"
-                alt=""
+                alt="한국일보 로고"
                 fill={true}
                 className="mt-4 scale-[50%] object-contain"
               />
@@ -170,7 +170,7 @@ export default function CertificationCard() {
             <div className="relative h-[156px] w-full">
               <Image
                 src="/images/v2/png/certification7.png"
-                alt=""
+                alt="뉴스1 로고"
                 fill={true}
                 className="scale-[40%] object-contain"
               />
@@ -200,7 +200,7 @@ export default function CertificationCard() {
             <div className="relative h-[156px] w-full">
               <Image
                 src="/images/v2/png/certification8.png"
-                alt=""
+                alt="인터뷰엠 로고"
                 fill={true}
                 className="scale-[60%] object-contain"
               />

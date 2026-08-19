@@ -66,7 +66,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
     default: DEFAULT_TITLE,
-    template: "%s | 워시펀 WashFun",
+    template: "%s | 워시펀",
   },
   description: DEFAULT_DESCRIPTION,
   applicationName: SITE_NAME,
@@ -142,29 +142,43 @@ export const metadata: Metadata = {
   },
 };
 
+// 회사 엔티티는 하나로 유지한다. Organization 과 LocalBusiness 를 따로 두면
+// 같은 회사가 두 개로 잡힌다. sameAs 는 소유한 프로필 자리라 언론 보도 URL 은 넣지 않는다.
 const organizationJsonLd = {
   "@context": "https://schema.org",
-  "@type": "Organization",
+  "@type": ["Organization", "LocalBusiness"],
   "@id": `${SITE_URL}#organization`,
   name: "워시펀 WashFun",
   legalName: "주식회사 라이프다이버전스",
   url: SITE_URL,
-  logo: `${SITE_URL}/images/logo/HorizontalType.svg`,
+  logo: `${SITE_URL}/images/logo/logo180.png`,
+  image: `${SITE_URL}/images/png/cover-page.png`,
   description: DEFAULT_DESCRIPTION,
   email: "contact@washfun.fun",
   telephone: "+82-70-8806-8088",
+  priceRange: "\u20a9\u20a9",
   address: {
     "@type": "PostalAddress",
     streetAddress: "종가6길 21, 우정혁신타워 605호",
     addressLocality: "울산광역시 중구",
+    addressRegion: "울산광역시",
+    postalCode: "44429",
     addressCountry: "KR",
   },
-  sameAs: [
-    "https://www.hankookilbo.com/News/Read/A2024110614530001135",
-    "https://www.news1.kr/industry/general-industry/5565629",
-    "http://www.interviewm.com/news/articleView.html?idxno=4634",
-  ],
+  geo: {
+    "@type": "GeoCoordinates",
+    latitude: 35.5683,
+    longitude: 129.3505,
+  },
   areaServed: "KR",
+  openingHoursSpecification: [
+    {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+      opens: "09:00",
+      closes: "18:00",
+    },
+  ],
   knowsAbout: [
     "세차장 창업 컨설팅",
     "세차장 리모델링",
@@ -179,54 +193,11 @@ const organizationJsonLd = {
 const websiteJsonLd = {
   "@context": "https://schema.org",
   "@type": "WebSite",
+  "@id": `${SITE_URL}#website`,
   name: SITE_NAME,
   url: SITE_URL,
   inLanguage: "ko-KR",
-  publisher: {
-    "@type": "Organization",
-    name: "주식회사 라이프다이버전스",
-  },
-};
-
-const localBusinessJsonLd = {
-  "@context": "https://schema.org",
-  "@type": "LocalBusiness",
-  "@id": `${SITE_URL}#localbusiness`,
-  name: "워시펀 WashFun",
-  legalName: "주식회사 라이프다이버전스",
-  url: SITE_URL,
-  image: `${SITE_URL}/images/png/cover-page.png`,
-  logo: `${SITE_URL}/images/logo/HorizontalType.svg`,
-  description: DEFAULT_DESCRIPTION,
-  telephone: "+82-70-8806-8088",
-  email: "contact@washfun.fun",
-  priceRange: "₩₩",
-  address: {
-    "@type": "PostalAddress",
-    streetAddress: "종가6길 21, 우정혁신타워 605호",
-    addressLocality: "울산광역시 중구",
-    addressRegion: "울산광역시",
-    postalCode: "44429",
-    addressCountry: "KR",
-  },
-  geo: {
-    "@type": "GeoCoordinates",
-    latitude: 35.5683,
-    longitude: 129.3505,
-  },
-  areaServed: { "@type": "Country", name: "대한민국" },
-  openingHoursSpecification: [
-    {
-      "@type": "OpeningHoursSpecification",
-      dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-      opens: "09:00",
-      closes: "18:00",
-    },
-  ],
-  sameAs: [
-    "https://www.hankookilbo.com/News/Read/A2024110614530001135",
-    "https://www.news1.kr/industry/general-industry/5565629",
-  ],
+  publisher: { "@id": `${SITE_URL}#organization` },
 };
 
 export default function RootLayout({
@@ -243,7 +214,6 @@ export default function RootLayout({
             __html: "document.documentElement.classList.add('js')",
           }}
         />
-        <link rel="shortcut icon" href="/icon.ico" />
         <meta name="theme-color" content="#ffffff" />
         <meta name="format-detection" content="telephone=yes" />
       </head>
@@ -261,12 +231,6 @@ export default function RootLayout({
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }}
-        />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify(localBusinessJsonLd),
-          }}
         />
         {children}
         <FloatingCTA />

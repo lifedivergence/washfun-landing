@@ -1,7 +1,6 @@
 # *
 User-agent: *
 Allow: /
-Disallow: /inquiry
 
 # Host
 Host: https://www.lifedivergence.com
