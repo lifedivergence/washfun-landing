@@ -9,6 +9,7 @@ const Inquiry = () => {
   const [agreed, setAgreed] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
+    store_name: "",
     phone: "",
     email: "",
     content: "",
@@ -56,6 +57,7 @@ const Inquiry = () => {
             (e.target as HTMLFormElement).reset();
             setFormData({
               name: "",
+              store_name: "",
               phone: "",
               email: "",
               content: "",
@@ -102,6 +104,19 @@ const Inquiry = () => {
           />
         </div>
         <div className="flex flex-col gap-3">
+          <label htmlFor="inquiry-store-name" className="text-[14px] font-medium text-[#6B7280]">
+            이용 지점
+          </label>
+          <input
+            className="rounded-[16px] border border-[#E1E3E6] bg-white px-[12px] py-[14px] focus:border-primary focus:outline-none"
+            id="inquiry-store-name"
+            name="store_name"
+            value={formData.store_name}
+            onChange={handleInputChange}
+            placeholder="이용하신 지점명을 입력해주세요."
+          />
+        </div>
+        <div className="flex flex-col gap-3">
           <label htmlFor="inquiry-phone" className="text-[14px] font-medium text-[#6B7280]">
             전화번호
           </label>
@@ -143,7 +158,7 @@ const Inquiry = () => {
         </div>
         <div className="mt-[20px] rounded-[12px] border border-[#E1E3E6] bg-white p-[14px] text-[13px] leading-[1.6] text-[#4B5563]">
           <p className="mb-[8px] font-bold text-black">개인정보 수집·이용 동의</p>
-          <p>수집 항목: 닉네임, 전화번호, 이메일, 문의 내용</p>
+          <p>수집 항목: 닉네임, 이용 지점, 전화번호, 이메일, 문의 내용</p>
           <p>이용 목적: 문의 접수와 상담 회신</p>
           <p>보유 기간: 상담 완료 후 지체 없이 파기</p>
           <p className="mt-[8px]">
